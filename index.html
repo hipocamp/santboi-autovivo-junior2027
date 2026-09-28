@@ -129,7 +129,7 @@
             llista.forEach(item => {
                 const jaFeta = esEsdevenimentPassat(item.data);
                 
-                const colorBorda = jaFeta ? "border-red-500 bg-red-50/20" : "border-green-500 bg-white";
+                const colorBorda = jaFeta ? "border-red-500 bg-red-50/20" : "border-black-500 bg-white";
                 const badge = jaFeta ? 
                     `<span class="bg-red-100 text-red-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">Finalitzada</span>` : 
                     `<span class="bg-green-100 text-green-600 text-[8px] font-black px-2 py-0.5 rounded-full uppercase due-pulse">Propera</span>`;
@@ -172,7 +172,7 @@
                         </a>
 
                         <!-- BOTÓ FOTOS -->
-                        <a href="${item.fotos}" target="_blank" class="${fotosClass} flex flex-col items-center justify-center bg-emerald-500 text-white py-3 rounded-2xl shadow-lg shadow-emerald-100">
+                        <a href="${item.fotos}" target="_blank" class="${fotosClass} flex flex-col items-center justify-center bg-gray-500 text-white py-3 rounded-2xl shadow-lg shadow-emerald-100">
                             <span class="text-lg">📸</span>
                             <span class="text-[9px] font-black uppercase mt-1 tracking-tighter">Fotos Cursa</span>
                         </a>
