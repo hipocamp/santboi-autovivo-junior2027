@@ -9,11 +9,15 @@
     <!-- Icona de la bicicleta vermella -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/512/DC2626/bicycle.png">
     <link rel="apple-touch-icon" href="https://img.icons8.com/ios-filled/512/DC2626/bicycle.png">
-    <meta name="theme-color" content="#dc2626">
-
-    <!-- Barra superior de Chrome / navegador en NEGRE -->
-    <meta name="theme-color" content="#000000">
     
+    <!-- FORÇAR BARRA SUPERIOR EN NEGRE (Android / Chrome) -->
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-navbutton-color" content="#000000">
+    
+    <!-- FORÇAR BARRA SUPERIOR EN NEGRE (iOS / Safari) -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <style>
         .cursa-card { transition: all 0.2s; }
         .cursa-card:active { transform: scale(0.98); }
@@ -24,8 +28,11 @@
 </head>
 <body class="bg-slate-200 pb-10 font-sans text-slate-900">
 
+    <!-- Franja de seguretat negra a dalt de tot per evitar que el navegador agafi el vermell -->
+    <div class="bg-black h-2 w-full"></div>
+
     <div class="max-w-md mx-auto">
-        <!-- Capçalera Vermella (Part superior del maillot) -->
+        <!-- Capçalera Vermella -->
         <header class="bg-red-600 text-white p-6 shadow-xl text-center rounded-b-3xl border-b-4 border-black">
             <h1 class="text-2xl font-black tracking-wider text-white uppercase leading-none">CC Sant Boi Autovivo</h1>
             <p class="text-[10px] font-black opacity-90 uppercase tracking-[0.2em] mt-2 text-white bg-black/30 inline-block px-3 py-1 rounded-full border border-white/20">Junior</p>
@@ -136,7 +143,7 @@
 
                 const card = document.createElement('div');
                 
-                // Requadre Negre (com culot) sobre fons Clar, amb linia esquerra vermella i perfil negre
+                // Requadre Negre sobre fons clar amb línia esquerra vermella
                 card.className = `cursa-card rounded-3xl shadow-xl border-l-[12px] border-l-red-600 p-5 bg-black border-2 border-black text-white`;
                 
                 const mapsClass = !item.maps ? "btn-disabled" : "";
