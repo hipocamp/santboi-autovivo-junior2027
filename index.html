@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Júnior 2027 - Autovivo</title>
+    <title>Júnior 2027 - CC Sant Boi Autovivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Icona de la bicicleta vermella -->
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/512/DC2626/bicycle.png">
     <link rel="apple-touch-icon" href="https://img.icons8.com/ios-filled/512/DC2626/bicycle.png">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#dc2626">
 
     <style>
         .cursa-card { transition: all 0.2s; }
         .cursa-card:active { transform: scale(0.98); }
-        .btn-disabled { opacity: 0.15; filter: grayscale(1); pointer-events: none; }
+        .btn-disabled { opacity: 0.2; filter: grayscale(1); pointer-events: none; }
         .due-pulse { animation: pulse 2s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
     </style>
 </head>
-<body class="bg-zinc-950 pb-10 font-sans text-slate-100">
+<body class="bg-slate-200 pb-10 font-sans text-slate-900">
 
     <div class="max-w-md mx-auto">
-        <!-- Capçalera Vermella Autovivo -->
-        <header class="bg-red-600 text-white p-6 shadow-xl text-center rounded-b-3xl border-b border-red-500/30">
+        <!-- Capçalera Vermella (Part superior del maillot) -->
+        <header class="bg-red-600 text-white p-6 shadow-xl text-center rounded-b-3xl border-b-4 border-black">
             <h1 class="text-2xl font-black tracking-wider text-white uppercase leading-none">CC Sant Boi Autovivo</h1>
-            <p class="text-[10px] font-black opacity-90 uppercase tracking-[0.2em] mt-2 text-zinc-900 bg-white/20 inline-block px-3 py-0.5 rounded-full">Junior</p>
-            <p class="text-[10px] font-bold opacity-90 uppercase tracking-[0.2em] mt-2 block">Temporada 2027</p>
+            <p class="text-[10px] font-black opacity-90 uppercase tracking-[0.2em] mt-2 text-white bg-black/30 inline-block px-3 py-1 rounded-full border border-white/20">Junior</p>
+            <p class="text-[10px] font-bold opacity-90 uppercase tracking-[0.2em] mt-2 block text-red-100">Temporada 2027</p>
         </header>
 
-        <!-- Navegació per Categories (Tabs en fons fosc) -->
-        <nav class="flex justify-around bg-zinc-900 mx-4 mt-4 p-1.5 rounded-2xl shadow-lg border border-zinc-800">
-            <button onclick="canviarCategoria('entrenaments')" id="tab-entrenaments" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all text-zinc-400">
+        <!-- Navegació per Categories (Tabs amb fons negre) -->
+        <nav class="flex justify-around bg-black mx-4 mt-4 p-1.5 rounded-2xl shadow-md border-2 border-red-600">
+            <button onclick="canviarCategoria('entrenaments')" id="tab-entrenaments" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all text-gray-400">
                 🏋️ Entrenaments
             </button>
-            <button onclick="canviarCategoria('copa')" id="tab-copa" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all text-zinc-400">
+            <button onclick="canviarCategoria('copa')" id="tab-copa" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all text-gray-400">
                 🏆 Copa Catalana
             </button>
-            <button onclick="canviarCategoria('sortides')" id="tab-sortides" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all text-zinc-400">
+            <button onclick="canviarCategoria('sortides')" id="tab-sortides" class="flex-1 py-2 text-xs font-bold rounded-xl transition-all text-gray-400">
                 🚴 Sortides
             </button>
         </nav>
@@ -100,13 +100,13 @@
         function canviarCategoria(categoria) {
             categoriaActual = categoria;
             
-            // Pestanya activa: vermell intens Autovivo (bg-red-600)
+            // Pestanya activa: vermell intens sobre menú negre
             ['entrenaments', 'copa', 'sortides'].forEach(cat => {
                 const btn = document.getElementById(`tab-${cat}`);
                 if (cat === categoria) {
-                    btn.className = "flex-1 py-2 text-xs font-black rounded-xl transition-all bg-red-600 text-white shadow-lg shadow-red-900/40";
+                    btn.className = "flex-1 py-2 text-xs font-black rounded-xl transition-all bg-red-600 text-white shadow-lg";
                 } else {
-                    btn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all text-zinc-400 hover:text-white";
+                    btn.className = "flex-1 py-2 text-xs font-bold rounded-xl transition-all text-gray-400 hover:text-white";
                 }
             });
 
@@ -120,7 +120,7 @@
             const llista = dades[categoriaActual] || [];
 
             if (llista.length === 0) {
-                container.innerHTML = `<p class="text-center text-zinc-500 text-sm font-semibold py-8">No hi ha esdeveniments en aquesta categoria.</p>`;
+                container.innerHTML = `<p class="text-center text-gray-500 text-sm font-semibold py-8">No hi ha esdeveniments en aquesta categoria.</p>`;
                 return;
             }
 
@@ -128,12 +128,13 @@
                 const jaFeta = esEsdevenimentPassat(item.data);
                 
                 const badge = jaFeta ? 
-                    `<span class="bg-red-950 text-red-400 border border-red-800/50 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">Finalitzada</span>` : 
-                    `<span class="bg-emerald-950 text-emerald-400 border border-emerald-800/50 text-[8px] font-black px-2 py-0.5 rounded-full uppercase due-pulse">Propera</span>`;
+                    `<span class="bg-red-950 text-red-400 border border-red-800 text-[8px] font-black px-2 py-0.5 rounded-full uppercase">Finalitzada</span>` : 
+                    `<span class="bg-emerald-950 text-emerald-400 border border-emerald-800 text-[8px] font-black px-2 py-0.5 rounded-full uppercase due-pulse">Propera</span>`;
 
                 const card = document.createElement('div');
-                // Requadre fosc (bg-zinc-900) amb vora esquerra vermella (border-l-red-600)
-                card.className = `cursa-card rounded-3xl shadow-lg border-l-[12px] border-l-red-600 p-5 bg-zinc-900 border-t border-r border-b border-zinc-800/80`;
+                
+                // Requadre Negre (com culot) sobre fons Clar, amb linia esquerra vermella i perfil negre
+                card.className = `cursa-card rounded-3xl shadow-xl border-l-[12px] border-l-red-600 p-5 bg-black border-2 border-black text-white`;
                 
                 const mapsClass = !item.maps ? "btn-disabled" : "";
                 const webClass = !item.web ? "btn-disabled" : "";
@@ -143,34 +144,34 @@
                 card.innerHTML = `
                     <div class="mb-4">
                         <div class="flex justify-between items-start">
-                            <p class="text-zinc-400 font-black text-[10px] uppercase tracking-widest">${item.data || "Pendent de data"}</p>
+                            <p class="text-red-500 font-black text-[10px] uppercase tracking-widest">${item.data || "Pendent de data"}</p>
                             ${badge}
                         </div>
                         <h2 class="text-xl font-bold text-white leading-tight mt-1">${item.nom}</h2>
-                        <p class="text-zinc-400 text-xs font-bold mt-1 uppercase tracking-tight">📍 ${item.lloc || "Per determinar"}</p>
+                        <p class="text-gray-400 text-xs font-bold mt-1 uppercase tracking-tight">📍 ${item.lloc || "Per determinar"}</p>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2">
                         <!-- BOTÓ MAPS -->
-                        <a href="${item.maps}" target="_blank" class="${mapsClass} flex flex-col items-center justify-center bg-red-600 hover:bg-red-700 text-white py-3 rounded-2xl shadow-lg shadow-red-950/50 transition-colors">
+                        <a href="${item.maps}" target="_blank" class="${mapsClass} flex flex-col items-center justify-center bg-red-600 text-white py-3 rounded-2xl shadow-md hover:bg-red-700 transition-colors">
                             <span class="text-lg">📍</span>
                             <span class="text-[9px] font-black uppercase mt-1 tracking-tighter">Com anar-hi</span>
                         </a>
                         
                         <!-- BOTÓ INFO WEB -->
-                        <a href="${item.web}" target="_blank" class="${webClass} flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 text-white py-3 rounded-2xl shadow-lg border border-zinc-700/50 transition-colors">
+                        <a href="${item.web}" target="_blank" class="${webClass} flex flex-col items-center justify-center bg-zinc-800 text-white py-3 rounded-2xl shadow-md border border-zinc-700 hover:bg-zinc-700 transition-colors">
                             <span class="text-lg">🌐</span>
                             <span class="text-[9px] font-black uppercase mt-1 tracking-tighter">Inscripció</span>
                         </a>
 
                         <!-- BOTÓ PDF (Instruccions) -->
-                        <a href="${item.pdf}" target="_blank" class="${pdfClass} flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 text-amber-400 py-3 rounded-2xl shadow-lg border border-zinc-700/50 transition-colors">
+                        <a href="${item.pdf}" target="_blank" class="${pdfClass} flex flex-col items-center justify-center bg-zinc-800 text-amber-400 py-3 rounded-2xl shadow-md border border-zinc-700 hover:bg-zinc-700 transition-colors">
                             <span class="text-lg">📄</span>
                             <span class="text-[9px] font-black uppercase mt-1 tracking-tighter">Convocatòria</span>
                         </a>
 
                         <!-- BOTÓ FOTOS -->
-                        <a href="${item.fotos}" target="_blank" class="${fotosClass} flex flex-col items-center justify-center bg-zinc-800 hover:bg-zinc-700 text-emerald-400 py-3 rounded-2xl shadow-lg border border-zinc-700/50 transition-colors">
+                        <a href="${item.fotos}" target="_blank" class="${fotosClass} flex flex-col items-center justify-center bg-zinc-800 text-emerald-400 py-3 rounded-2xl shadow-md border border-zinc-700 hover:bg-zinc-700 transition-colors">
                             <span class="text-lg">📸</span>
                             <span class="text-[9px] font-black uppercase mt-1 tracking-tighter">Fotos Cursa</span>
                         </a>
