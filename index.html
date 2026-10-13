@@ -59,6 +59,9 @@
     </div>
 
     <script>
+        // --- URL DEL CALENDARI EN PDF ---
+        const urlCalendariPDF = "https://hipocamp.github.io/santboi-autovivo-junior2027/calendari_entrenaments.pdf";
+
         // --- DADES DE LES CATEGORIES ---
         const dades = {
             entrenaments: [
@@ -71,7 +74,7 @@
                     pdf: "https://hipocamp.github.io/santboi-autovivo-junior2027/primera_convocatoria.pdf",
                     fotos: ""
                 },
-                   {
+                {
                     data: "31/10/2026",
                     nom: "2a convocatòria",
                     lloc: "Per determinar",
@@ -79,7 +82,7 @@
                     web: "",
                     pdf: "",
                     fotos: ""
-                },   
+                },
                 {
                     data: "14/11/2026",
                     nom: "3a convocatòria",
@@ -106,7 +109,7 @@
                     web: "",
                     pdf: "",
                     fotos: ""
-                }, 
+                },
                 {
                     data: "19/12/2026",
                     nom: "6a convocatòria",
@@ -116,7 +119,7 @@
                     pdf: "",
                     fotos: ""
                 },
-               {
+                {
                     data: "09/01/2027",
                     nom: "7a convocatòria",
                     lloc: "Per determinar",
@@ -125,7 +128,7 @@
                     pdf: "",
                     fotos: ""
                 },
-              {
+                {
                     data: "23/01/2027",
                     nom: "8a convocatòria",
                     lloc: "Per determinar",
@@ -134,7 +137,7 @@
                     pdf: "",
                     fotos: ""
                 },
-                 {
+                {
                     data: "12/02/2027",
                     nom: "Stage, del 12 al 14 de febrer",
                     lloc: "Per determinar",
@@ -165,10 +168,10 @@
                     pdf: "",
                     fotos: ""
                 }
-            ],
+            ]
         };
 
-        let categoriaActual = 'copa';
+        let categoriaActual = 'entrenaments';
 
         function esEsdevenimentPassat(dataString) {
             if (!dataString) return false;
@@ -199,10 +202,25 @@
             const container = document.getElementById('llista-esdeveniments');
             container.innerHTML = '';
 
+            // SI ESTAM A ENTRENAMENTS, MOSTRAR EL REQUADRE SUPERIOR
+            if (categoriaActual === 'entrenaments') {
+                const bannerDiv = document.createElement('div');
+                bannerDiv.className = "rounded-3xl shadow-xl p-5 bg-black border-2 border-red-600 text-white mb-6 text-center";
+                bannerDiv.innerHTML = `
+                    <h2 class="text-lg font-black uppercase text-white tracking-wide">📅 Calendari entrenaments i stage</h2>
+                    <p class="text-xs text-gray-400 mt-1 mb-4">Descarrega o consulta el calendari complet de la temporada</p>
+                    <a href="${urlCalendariPDF}" target="_blank" class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase py-3 px-6 rounded-2xl shadow-md transition-colors w-full">
+                        <span>📄</span>
+                        <span>Obrir PDF Calendari</span>
+                    </a>
+                `;
+                container.appendChild(bannerDiv);
+            }
+
             const llista = dades[categoriaActual] || [];
 
             if (llista.length === 0) {
-                container.innerHTML = `<p class="text-center text-gray-500 text-sm font-semibold py-8">No hi ha esdeveniments en aquesta categoria.</p>`;
+                container.innerHTML += `<p class="text-center text-gray-500 text-sm font-semibold py-8">No hi ha esdeveniments en aquesta categoria.</p>`;
                 return;
             }
 
@@ -263,7 +281,7 @@
             });
         }
 
-        canviarCategoria('copa');
+        canviarCategoria('entrenaments');
     </script>
 </body>
 </html>
